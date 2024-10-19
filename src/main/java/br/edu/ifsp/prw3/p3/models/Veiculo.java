@@ -1,5 +1,6 @@
-package br.edu.ifsp.prw3.p3.veiculo;
+package br.edu.ifsp.prw3.p3.models;
 
+import br.edu.ifsp.prw3.p3.dtos.VeiculoRecordDTO;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +13,13 @@ import lombok.NoArgsConstructor;
 public class Veiculo {
     private String marca;
     private String modelo;
-    private int ano;
+    private String cor;
+    private String ano;
 
-    public Veiculo(DadosCadastroVeiculo dados){
+    public Veiculo(VeiculoRecordDTO dados){
         this.marca = dados.marca();
         this.modelo = dados.modelo();
+        this.cor = dados.cor();
         this.ano = dados.ano();
     }
 }

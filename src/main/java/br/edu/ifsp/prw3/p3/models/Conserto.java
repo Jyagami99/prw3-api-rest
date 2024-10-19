@@ -1,14 +1,13 @@
-package br.edu.ifsp.prw3.p3.conserto;
+package br.edu.ifsp.prw3.p3.models;
 
-import br.edu.ifsp.prw3.p3.mecanico.Mecanico;
-import br.edu.ifsp.prw3.p3.veiculo.Veiculo;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import br.edu.ifsp.prw3.p3.dtos.ConsertoRecordDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "conserto")
 @Entity(name = "conserto")
 @Getter
 @NoArgsConstructor
@@ -18,23 +17,17 @@ public class Conserto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "data_entrada")
-    private String dataEntrada;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "data_saida")
-    private String dataSaida;
+    private String data_entrada;
+    private String data_saida;
 
     @Embedded
     private Mecanico mecanico;
     @Embedded
     private Veiculo veiculo;
 
-    public Conserto(DadosCadastroConserto dados) {
-        this.dataEntrada = dados.dataEntrada();
-        this.dataSaida = dados.dataSaida();
+    public Conserto(ConsertoRecordDTO dados) {
+        this.data_entrada = dados.data_entrada();
+        this.data_saida = dados.data_saida();
         this.mecanico = new Mecanico(dados.mecanico());
         this.veiculo = new Veiculo(dados.veiculo());
     }

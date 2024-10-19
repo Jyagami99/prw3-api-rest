@@ -1,6 +1,6 @@
-package br.edu.ifsp.prw3.p3.mecanico;
+package br.edu.ifsp.prw3.p3.models;
 
-import jakarta.persistence.Column;
+import br.edu.ifsp.prw3.p3.dtos.MecanicoRecordDTO;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Mecanico {
    private String nome;
-   @Column(name = "anos_experiencia")
-   private int anosExperiencia;
+   private int anos_experiencia;
 
-   public Mecanico(DadosCadastroMecanico dados) {
+   public Mecanico(MecanicoRecordDTO dados) {
       this.nome = dados.nome();
-      this.anosExperiencia = dados.anosExperiencia();
+      this.anos_experiencia = dados.anos_experiencia();
    }
 }

@@ -12,10 +12,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Mecanico {
    private String nome;
-   private int anos_experiencia;
+   private String anos_experiencia;
 
    public Mecanico(MecanicoRecordDTO dados) {
       this.nome = dados.nome();
       this.anos_experiencia = dados.anos_experiencia();
    }
+
+   public void atualizarInformacoes(MecanicoRecordDTO dados){
+      if(dados.nome() != null){
+         this.nome = dados.nome();
+      }
+      if(dados.anos_experiencia() != null){
+         this.anos_experiencia = dados.anos_experiencia();
+      }
+   }
+
 }
